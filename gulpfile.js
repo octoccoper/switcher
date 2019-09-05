@@ -18,8 +18,8 @@ gulp.task('less', function () {
     return gulp.src('less/*')
         .pipe(less()) // Using gulp-less
         .pipe(cleanCSS())
-        .pipe(gulp.dest('css/'))
         .pipe(autoprefixer())
+        .pipe(gulp.dest('css/'))
 });
 
 gulp.task('minify-css', () => {
