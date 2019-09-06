@@ -1,13 +1,15 @@
-var eventSwitcher = new CustomEvent('switcherChange',{ detail: {time: new Date()}});
-
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    var switcher = document.querySelectorAll("[data-type='c-switcher']")[0];
+    var switcher = document.querySelectorAll("[data-type='c-switcher'] [type='checkbox']")[0],
+    eventSwitcher = new CustomEvent('switcher.change', { detail: { status: switcher.checked }});
+
+    switcher.addEventListener('switcher.change',switcherChangeFunc, false);
     switcher.dispatchEvent(eventSwitcher);
 
-    console.log(switcher);
 });
 
-function switcherChange(e) {
-    console.log(e, e.detail);
+function switcherChangeFunc(e) {
+    var switcherState;
+    switcherState = e.detail.status;
+    console.log("switcherChange works!", "switcherState is: ",switcherState);
 }
