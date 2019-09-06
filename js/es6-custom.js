@@ -26,16 +26,17 @@ class Switcher {
         }
     }
 
-    showMesage() {
-        console.log(this.htmlElement);
+    bind(htmlElement) {
+        this.htmlElement.addEventListener("change",() => {this.checkSwitcherState(this.htmlElement);});
     }
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
     const switcher = document.querySelectorAll("[data-type='c-switcher'] [type='checkbox']")[0];
+
     let newSwitcher = new Switcher(switcher);
-    switcher.addEventListener("change",() => {newSwitcher.checkSwitcherState(switcher);});
+    newSwitcher.bind(switcher);
 
 });
 
