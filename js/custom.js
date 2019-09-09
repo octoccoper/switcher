@@ -1,3 +1,4 @@
+// factory realization of switcher old ES
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
