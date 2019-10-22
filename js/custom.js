@@ -1,3 +1,4 @@
+
 // factory realization of switcher old ES
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -7,16 +8,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 });
 
-function switcherChangeFunc(e) {
-
+function switcherGetFunc(e) {
     var switcherState;
     switcherState = e.detail.status;
-    if(switcherState) {
-        console.log("switcherChangeFunc works!", "switcherState is: ",switcherState);
-    } else {
-        console.log("switcherChangeFunc works!", "switcherState is: ",switcherState);
-    }
-
+    return switcherState;
 }
 
 function checkSwitcherState() {
@@ -24,11 +19,11 @@ function checkSwitcherState() {
     var checkboxSwitcher = document.querySelectorAll("[data-type='c-switcher'] [type='checkbox']")[0],
         eventSwitcher = new CustomEvent('switcher.change', { detail: { status: checkboxSwitcher.checked }});
     if (checkboxSwitcher.checked === true) {
-        checkboxSwitcher.addEventListener('switcher.change',switcherChangeFunc, true);
+        checkboxSwitcher.addEventListener('switcher.change',switcherGetFunc, true);
         checkboxSwitcher.dispatchEvent(eventSwitcher);
-        console.log("checkboxSwitcher.checked === true");
+        return true;
     } else {
-        console.log("checkboxSwitcher.checked === false");
+        return false;
     }
 
 }
